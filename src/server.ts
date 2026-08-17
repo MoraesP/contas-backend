@@ -5,7 +5,11 @@ import { env } from './config/env.js';
 
 async function main() {
   await conectarBanco();
-  await seedSeVazio();
+  // Auto-seed só faz sentido no Mongo em memória (dev) — em produção
+  // (MONGODB_URI definida), um banco vazio deve continuar vazio.
+  if (!env.mongodbUri) {
+    await seedSeVazio();
+  }
 
   const app = criarApp();
   app.listen(env.port, () => {
