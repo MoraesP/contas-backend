@@ -13,6 +13,7 @@ import debitoRoutes from './routes/debito.routes.js';
 import pessoaRoutes from './routes/pessoa.routes.js';
 import categoriaRoutes from './routes/categoria.routes.js';
 import dashboardRoutes from './routes/dashboard.routes.js';
+import importacaoRoutes from './routes/importacao.routes.js';
 
 export function criarApp() {
   const app = express();
@@ -34,6 +35,7 @@ export function criarApp() {
   app.use('/api/pessoas', pessoaRoutes);
   app.use('/api/categorias', categoriaRoutes);
   app.use('/api/dashboard', dashboardRoutes);
+  app.use('/api/importacoes', importacaoRoutes);
 
   app.use(rotaNaoEncontrada);
   app.use(errorHandler);

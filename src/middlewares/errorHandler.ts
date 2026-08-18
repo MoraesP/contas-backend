@@ -1,10 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import { ZodError } from 'zod';
+import multer from 'multer';
 import { AppError } from '../utils/AppError.js';
 
 export function errorHandler(err: unknown, _req: Request, res: Response, _next: NextFunction): void {
   if (err instanceof AppError) {
     res.status(err.statusCode).json({ error: { message: err.message, code: err.code } });
+    return;
+  }
+
+  if (err instanceof multer.MulterError) {
+    res.status(400).json({ error: { message: `Arquivo inválido: ${err.message}`, code: 'REQUISICAO_INVALIDA' } });
     return;
   }
 

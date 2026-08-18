@@ -14,18 +14,21 @@ import { DebitoModel } from '../models/Debito.js';
 async function popular(): Promise<void> {
   const nu = await CartaoModel.create({
     nome: 'Nubank Roxo',
+    codigo: 'NUB',
     corCaracteristica: '#820AD1',
     dataFechamento: 14,
     dataVencimento: 21,
   });
   const inter = await CartaoModel.create({
     nome: 'Inter Laranja',
+    codigo: 'INT',
     corCaracteristica: '#FF7A00',
     dataFechamento: 5,
     dataVencimento: 12,
   });
   const c6 = await CartaoModel.create({
     nome: 'C6 Carbon',
+    codigo: 'CAR',
     corCaracteristica: '#3AA98F',
     dataFechamento: 20,
     dataVencimento: 27,
