@@ -31,7 +31,7 @@ export async function criarDebito(faturaId: string, dados: CriarDebitoInput) {
       valor,
       valorTotal: dados.valorTotal,
       numeroParcelas: dados.numeroParcelas,
-      parcelaAtual: 1,
+      parcelaAtual: dados.parcelaAtual ?? 1,
     });
     doc.compraId = doc._id;
     await doc.save();

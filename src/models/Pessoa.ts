@@ -3,7 +3,6 @@ import { Schema, model, InferSchemaType } from 'mongoose';
 const pessoaSchema = new Schema(
   {
     nome: { type: String, required: true, trim: true },
-    cor: { type: String, trim: true },
   },
   { timestamps: true },
 );
